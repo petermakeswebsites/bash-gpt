@@ -15,18 +15,25 @@ export BASH_GPT=sk-abcdefg...
 1. Make the Script Executable: First, you should make sure the script is executable. This is done using the chmod command.
 
 ```bash
+# from bash-gpt directory
 chmod +x ai.sh
 ```
 
 2. Move the Script to a Directory in Your PATH: Then, you need to move the script to a directory that's included in your system's PATH. Common directories for this purpose are `/usr/local/bin` or `~/bin` (if it exists and is in your PATH).
 
 ```bash
+# from bash-gpt directory
 sudo cp ai.sh /usr/local/bin/ai
 ```
 
 Note you can replace `ai` at the end with whatever you want to call it.
 
-You probably can do some kind of symlink to the repo.
+You probably can do some kind of symlink to the repo instead though
+
+```bash
+# from bash-gpt directory
+sudo ln -s $PWD/ai.sh /usr/local/bin/ai
+```
 
 ## Usage
 
