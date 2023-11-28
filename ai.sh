@@ -32,7 +32,7 @@ query_openai() {
 # Check if there are arguments passed to the script
 if [ $# -eq 0 ]; then
     # No arguments passed, ask the user for input
-    echo "Enter a prompt:"
+    echo -e "\033[1;34mEnter a prompt:\033[0m"
     read command_description
 else
     # Use the arguments as the prompt
@@ -41,8 +41,6 @@ fi
 
 # Escape the prompt for JSON using jq
 json_safe_prompt=$(jq -cn --arg str "$command_description" '$str')
-
-echo $json_safe_prompt
 
 # Generating the AI response
 ai_response=$(query_openai "$json_safe_prompt")
