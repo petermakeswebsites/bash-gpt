@@ -33,21 +33,21 @@ query_openai() {
 if [ $# -eq 0 ]; then
     # No arguments passed, ask the user for input
     echo -e "\033[1;34mEnter a prompt:\033[0m"
-    read command_description
+    read -r command_description
 else
     # Use the arguments as the prompt
     command_description="$*"
 fi
 
 # Escape the prompt for JSON using jq
-json_safe_prompt=$(jq -cn --arg str "$command_description" '$str')
+json_safe_prompt="$(jq -cn --arg str "$command_description" '$str')"
 
 # Generating the AI response
 ai_response=$(query_openai "$json_safe_prompt")
-data=$(echo $ai_response | jq -r '.choices[0].message.content')
+data=$(echo "$ai_response" | jq -r '.choices[0].message.content')
 
-actual_command=$(echo $data | jq -r '.cmd')
-description=$(echo $data | jq -r '.desc')
+actual_command=$(echo "$data" | jq -r '.cmd')
+description=$(echo "$data" | jq -r '.desc')
 
 # Displaying the information with colors and decoration
 echo -e "\033[1;33m----\033[0m"  # Yellow color for decoration
