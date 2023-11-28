@@ -71,12 +71,3 @@ while read -rsn1 key; do
         break
     fi
 done
-
-# if [[ "$key" = q ]]; then
-#     echo -e "\n\033[1;31mCommand execution cancelled.\033[0m"
-#     exit 0
-# else
-#     echo -e "\n\033[1;32mExecuting command...\033[0m"
-#     eval "$actual_command"
-# fi
-
